@@ -1,6 +1,20 @@
 export default class ArrayDeNotas {
 
-    constructor() { this.notas = []; }
+
+    // Atributos Privados
+    #subs;
+
+    // Construtor
+    constructor() { this.notas = []; this.#subs = []; }
+
+    inscrever(func) { this.#subs.push(func); }
+
+    notificar() {
+
+        this.#subs.forEach(
+            (func) => func(this.categorias)
+        );
+    }
 
     adicionarNota(titulo, texto, categoria) {
 

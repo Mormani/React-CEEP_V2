@@ -1,6 +1,19 @@
 export default class Categorias {
 
-    constructor() { this.categorias = []; }
+    // Atributos Privados
+    #subs;
+
+    // Construtor
+    constructor() { this.categorias = []; this.#subs = []; }
+
+    inscrever(func) { this.#subs.push(func); }
+
+    notificar() {
+
+        this.#subs.forEach(
+            (func) => func(this.categorias)
+        );
+    }
 
     adicionarCategoria(novaCategoria) {
 
