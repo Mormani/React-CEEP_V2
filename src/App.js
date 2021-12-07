@@ -27,8 +27,8 @@ class App extends Component {
             />
             <main className="conteudo-principal">
                 <ListaDeCategorias
-                    categorias={this.categorias}
-                    adicionarCategoria={this.categorias.adicionarCategoria.bind(this.categorias)}
+                    categorias={this.categorias.categorias}
+                    adicionarCategoria={this.categorias.adicionarCategoria}
                 />
                 <ListaDeNotas
                     notas={this.notas.notas}

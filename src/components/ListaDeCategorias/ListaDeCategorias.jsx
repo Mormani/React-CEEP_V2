@@ -3,13 +3,6 @@ import "./style.css";
 
 class ListaDeCategorias extends Component {
 
-    componentDidMount() { this.props.categorias.inscrever(this._novasCategorias); }
-
-    _novasCategorias(categorias) {
-
-        console.log(categorias);
-    }
-
     _handlerEventoInput(e) {
 
         if (e.key === "Enter") {
@@ -26,7 +19,7 @@ class ListaDeCategorias extends Component {
 
             <section className="lista-categorias">
                 <ul className="lista-categorias_lista">
-                    {this.props.categorias.categorias.map(
+                    {this.props.categorias.map(
                         (categoria, index) => {
                             return ( <li className="lista-categorias_item" key={index}>{categoria}</li> );
                         }
