@@ -7,7 +7,8 @@ class ListaDeCategorias extends Component {
 
         if (e.key === "Enter") {
 
-            let valorCategoria = e.target.value
+            let valorCategoria = e.target.value;
+            e.target.value = "";
             this.props.adicionarCategoria(valorCategoria);
         }
     }
