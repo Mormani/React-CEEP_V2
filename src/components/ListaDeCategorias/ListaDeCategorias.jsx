@@ -3,10 +3,20 @@ import "./style.css";
 
 class ListaDeCategorias extends Component {
 
-    // Construtor
-    constructor() { super(); this.state = { categorias: [] }; }
+    // Atributos Privados
+    #novasCategorias;
 
-    componentDidMount() { this.props.categorias.inscrever(this._novasCategorias.bind(this)); }
+    // Construtor
+    constructor() {
+
+        super();
+        this.state = { categorias: [] };
+        this.#novasCategorias = this._novasCategorias.bind(this);
+    }
+
+    componentDidMount() { this.props.categorias.inscrever(this.#novasCategorias); }
+
+    componentWillUnmount() { this.props.categorias.desinscrever(this.#novasCategorias); }
 
     _novasCategorias(categorias) { this.setState( {...this.state, categorias} ); }
 

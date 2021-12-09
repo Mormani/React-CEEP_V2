@@ -8,6 +8,8 @@ export default class Categorias {
 
     inscrever(func) { this.#subs.push(func); }
 
+    desinscrever(paramFunc) { this.#subs = this.#subs.filter(func => func !== paramFunc); }
+
     notificar() {
 
         this.#subs.forEach(

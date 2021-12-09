@@ -3,6 +3,9 @@ import "./style.css";
 
 class FormularioCadastro extends Component {
 
+    // Atributos Privados
+    #novasCategorias;
+
     // Construtor
     constructor(props) {
 
@@ -11,9 +14,12 @@ class FormularioCadastro extends Component {
         this.texto = "";
         this.categoria = "Sem Categoria";
         this.state = { categorias: [] };
+        this.#novasCategorias = this._novasCategorias.bind(this);
     }
 
-    componentDidMount() { this.props.categorias.inscrever(this._novasCategorias.bind(this)); }
+    componentDidMount() { this.props.categorias.inscrever(this.#novasCategorias); }
+
+    componentWillUnmount() { this.props.categorias.desinscrever(this.#novasCategorias); }
 
     _novasCategorias(categorias) { this.setState( {...this.state, categorias} ); }
 

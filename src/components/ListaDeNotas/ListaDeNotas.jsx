@@ -4,9 +4,20 @@ import "./style.css";
 
 class ListaDeNotas extends Component {
 
-    constructor() { super(); this.state = { notas: [] }; }
+    // Atributos Privados
+    #novasNotas;
 
-    componentDidMount() { this.props.notas.inscrever(this._novasNotas.bind(this)); }
+    // Construtor
+    constructor() {
+
+        super();
+        this.state = { notas: [] };
+        this.#novasNotas = this._novasNotas.bind(this);
+    }
+
+    componentDidMount() { this.props.notas.inscrever(this.#novasNotas); }
+
+    componentWillUnmount() { this.props.notas.desinscrever(this.#novasNotas); }
 
     _novasNotas(notas) { this.setState( {...this.state, notas } )  }
 
