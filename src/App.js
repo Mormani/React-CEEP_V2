@@ -22,17 +22,17 @@ class App extends Component {
         return (
         <section className="conteudo">
             <FormularioCadastro
-                criarNota={this.notas.criarNota}
-                categorias={this.categorias.categorias}
+                criarNota={this.notas.adicionarNota.bind(this.notas)}
+                categorias={this.categorias}
             />
             <main className="conteudo-principal">
                 <ListaDeCategorias
-                    categorias={this.categorias.categorias}
-                    adicionarCategoria={this.categorias.adicionarCategoria}
+                    categorias={this.categorias}
+                    adicionarCategoria={this.categorias.adicionarCategoria.bind(this.categorias)}
                 />
                 <ListaDeNotas
-                    notas={this.notas.notas}
-                    apagarNota={this.notas.apagarNota.bind(this)}
+                    notas={this.notas}
+                    apagarNota={this.notas.apagarNota.bind(this.notas)}
                 />
             </main>
         </section>

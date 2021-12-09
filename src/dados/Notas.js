@@ -1,6 +1,5 @@
 export default class ArrayDeNotas {
 
-
     // Atributos Privados
     #subs;
 
@@ -12,7 +11,7 @@ export default class ArrayDeNotas {
     notificar() {
 
         this.#subs.forEach(
-            (func) => func(this.categorias)
+            (func) => func(this.notas)
         );
     }
 
@@ -20,9 +19,14 @@ export default class ArrayDeNotas {
 
         const novaNota = new Nota(titulo, texto, categoria);
         this.notas.push(novaNota);
+        this.notificar();
     }
 
-    apagarNota(indice) { this.notas.splice(indice, 1); }
+    apagarNota(indice) {
+
+        this.notas.splice(indice, 1);
+        this.notificar();
+    }
 }
 
 class Nota{
